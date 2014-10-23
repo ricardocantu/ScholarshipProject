@@ -18,7 +18,7 @@ public class Student extends SchoolUser{
 			String studentCollege, boolean hasDeclaredMajor, String studentMajor,
 			String studentClassification, double studentGPA) {
 		
-		super(frstName, lstName, schoolIDNumber, usrName, userIsAdmin);
+		super(userIsAdmin, frstName, lstName, schoolIDNumber, usrName);
 		
 		password = passwordEntry;
 		college = studentCollege;

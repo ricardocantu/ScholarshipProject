@@ -19,7 +19,6 @@ public class Scholarship {
 	
 	private int currentNumStudents;//added students 
 	
-	
 	public Scholarship(String awardName, String awardMajor, boolean hasDeclaredMajor, double awardMinGPA,
 			int awardMinHrs, String awardClassification, int awardAmount, int numOfAwardsAvail){
 		
@@ -106,7 +105,9 @@ public class Scholarship {
 			return false;
 	}
 	
-	//Add to the number of current students of this award and return String stating if able to or not
+	/*/NOT SURE OF THIS COMMENTED OUT YET
+	 * 
+	 * Add to the number of current students of this award and return String stating if able to or not
 	public String addCurrentNumStudents(){
 		
 		if(currentNumStudents<maxNumAwards){
@@ -126,8 +127,5 @@ public class Scholarship {
 		else
 			currentNumStudents = 0;	
 	}
-	
-	
-	
-	
+	*/
 }

@@ -1,6 +1,8 @@
 
 public class SchoolUser {
 	
+	private boolean adminUser;//to check if it is an administrator
+	
 	private String firstName;
 	
 	private String lastName;
@@ -9,10 +11,10 @@ public class SchoolUser {
 	
 	private String userName;
 	
-	private boolean adminUser;//to check if it is an administrator
 	
-	public SchoolUser(String frstName, String lstName, int schoolIDNumber, 
-			String usrName, boolean userIsAdmin){
+	
+	public SchoolUser( boolean userIsAdmin, String frstName, String lstName, int schoolIDNumber, 
+			String usrName){
 		firstName = frstName;
 		lastName = lstName;
 		schoolID = schoolIDNumber;
