@@ -17,20 +17,15 @@ public class Student extends SchoolUser{
 			String usrName, boolean userIsAdmin, String passwordEntry,
 			String studentCollege, boolean hasDeclaredMajor, String studentMajor,
 			String studentClassification, double studentGPA) {
+		
 		super(frstName, lstName, schoolIDNumber, usrName, userIsAdmin);
 		
 		password = passwordEntry;
-		
 		college = studentCollege;
-		
 		declaredMajor = hasDeclaredMajor;
-		
 		major = studentMajor;
-		
 		classification = studentClassification;
-		
 		gpa = studentGPA;
-		
 	}
 	
 	public void setPassword(String studentPassword){

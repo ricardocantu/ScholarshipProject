@@ -9,7 +9,7 @@ public class SchoolUser {
 	
 	private String userName;
 	
-	private boolean adminUser;
+	private boolean adminUser;//to check if it is an administrator
 	
 	public SchoolUser(String frstName, String lstName, int schoolIDNumber, 
 			String usrName, boolean userIsAdmin){
