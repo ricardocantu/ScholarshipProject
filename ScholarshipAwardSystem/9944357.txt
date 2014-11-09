@@ -1,0 +1,13 @@
+<firstName> Ricardo
+<lastName> Cantu
+<schoolID> 9944357
+<username> cantur22
+<isAdmin> false
+<college> Science and Technology
+<declared> true
+<major> Computer Science
+<classification> Junior
+<gpa> 3.44
+<hours> 60
+<scholarship> false
+

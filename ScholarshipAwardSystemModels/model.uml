@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_RnwqsGNVEeSpl_fGTOQHaw" name="model">
+  <packagedElement xmi:type="uml:Package" xmi:id="_l3iWsGNVEeSpl_fGTOQHaw" name="ScholarshipAwardSystem">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_puINwGNVEeSpl_fGTOQHaw" name="System Login"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_sEg2UGNVEeSpl_fGTOQHaw" name="Add Scholarship"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_v6K5QGNVEeSpl_fGTOQHaw" name="Apply for Scholarship"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_--wSwGNVEeSpl_fGTOQHaw" name="View Recipients"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_DioGkGNWEeSpl_fGTOQHaw" name="Administrator"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_E2BoIGNWEeSpl_fGTOQHaw" name="Student"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_J4QL4GNWEeSpl_fGTOQHaw" name="A_administrator_system login" memberEnd="_J4QL4WNWEeSpl_fGTOQHaw _J4QL5GNWEeSpl_fGTOQHaw">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_J4QL4WNWEeSpl_fGTOQHaw" name="administrator" type="_DioGkGNWEeSpl_fGTOQHaw" association="_J4QL4GNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_J4QL4mNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_J4QL42NWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_J4QL5GNWEeSpl_fGTOQHaw" name="system login" type="_puINwGNVEeSpl_fGTOQHaw" association="_J4QL4GNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_J4QL5WNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_J4QL5mNWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LD-YIGNWEeSpl_fGTOQHaw" name="A_administrator_add scholarship" memberEnd="_LD-YIWNWEeSpl_fGTOQHaw _LD-YJGNWEeSpl_fGTOQHaw">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LD-YIWNWEeSpl_fGTOQHaw" name="administrator" type="_DioGkGNWEeSpl_fGTOQHaw" association="_LD-YIGNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LD-YImNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LD-YI2NWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LD-YJGNWEeSpl_fGTOQHaw" name="add scholarship" type="_sEg2UGNVEeSpl_fGTOQHaw" association="_LD-YIGNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LD-YJWNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LD-YJmNWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QUOw0GNWEeSpl_fGTOQHaw" name="A_administrator_view recipients" memberEnd="_QUOw0WNWEeSpl_fGTOQHaw _QUOw1GNWEeSpl_fGTOQHaw">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QUOw0WNWEeSpl_fGTOQHaw" name="administrator" type="_DioGkGNWEeSpl_fGTOQHaw" association="_QUOw0GNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QUOw0mNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QUOw02NWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QUOw1GNWEeSpl_fGTOQHaw" name="view recipients" type="_--wSwGNVEeSpl_fGTOQHaw" association="_QUOw0GNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QUOw1WNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QUOw1mNWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_YK9cgGNWEeSpl_fGTOQHaw" name="A_student_system login" memberEnd="_YK9cgWNWEeSpl_fGTOQHaw _YK9chGNWEeSpl_fGTOQHaw">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_YK9cgWNWEeSpl_fGTOQHaw" name="student" type="_E2BoIGNWEeSpl_fGTOQHaw" association="_YK9cgGNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YK9cgmNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YK9cg2NWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_YK9chGNWEeSpl_fGTOQHaw" name="system login" type="_puINwGNVEeSpl_fGTOQHaw" association="_YK9cgGNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YK9chWNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YK9chmNWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_aul24GNWEeSpl_fGTOQHaw" name="A_student_apply for scholarship" memberEnd="_aul24WNWEeSpl_fGTOQHaw _aul25GNWEeSpl_fGTOQHaw">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_aul24WNWEeSpl_fGTOQHaw" name="student" type="_E2BoIGNWEeSpl_fGTOQHaw" association="_aul24GNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aul24mNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aul242NWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_aul25GNWEeSpl_fGTOQHaw" name="apply for scholarship" type="_v6K5QGNVEeSpl_fGTOQHaw" association="_aul24GNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aul25WNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aul25mNWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_c3dn4GNWEeSpl_fGTOQHaw" name="A_student_view recipients" memberEnd="_c3dn4WNWEeSpl_fGTOQHaw _c3dn5GNWEeSpl_fGTOQHaw">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_c3dn4WNWEeSpl_fGTOQHaw" name="student" type="_E2BoIGNWEeSpl_fGTOQHaw" association="_c3dn4GNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c3dn4mNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_c3dn42NWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_c3dn5GNWEeSpl_fGTOQHaw" name="view recipients" type="_--wSwGNVEeSpl_fGTOQHaw" association="_c3dn4GNWEeSpl_fGTOQHaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c3dn5WNWEeSpl_fGTOQHaw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_c3dn5mNWEeSpl_fGTOQHaw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

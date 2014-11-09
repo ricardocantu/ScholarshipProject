@@ -22,8 +22,11 @@ public class SchoolUser {
 		adminUser = userIsAdmin;
 	}
 	
-	public void setName(String first, String last){
+	public void setFirstName(String first){
 		firstName = first;
+	}
+	
+	public void setLastName(String last){
 		lastName = last;
 	}
 	
@@ -39,8 +42,12 @@ public class SchoolUser {
 		userName = usrName;
 	}
 
-	public String getName(){
-		return firstName+" "+lastName;
+	public String getFirstName(){
+		return firstName;
+	}
+	
+	public String getLastName(){
+		return lastName;
 	}
 	
 	public int getSchoolID(){

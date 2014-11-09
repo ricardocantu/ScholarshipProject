@@ -1,0 +1,10 @@
+<username> cantur22
+<password> 123456
+<isAdmin> false
+<idNum> 9944357
+<
+<username> juan
+<password> dos
+<isAdmin> true
+<idNum> 666
+
