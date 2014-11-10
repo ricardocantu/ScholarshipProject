@@ -6,5 +6,5 @@
 <username> juan
 <password> dos
 <isAdmin> true
-<idNum> 666
+<idNum> 123456
 

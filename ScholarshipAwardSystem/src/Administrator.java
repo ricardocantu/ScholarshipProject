@@ -6,6 +6,13 @@ public class Administrator extends SchoolUser {
 	private String schoolDepartment;
 	
 	private String adminTitle;
+	
+	public Administrator(){
+		super(true,"","",0,"");
+		password = "";
+		schoolDepartment = "";
+		adminTitle = "";
+	}
 
 	public Administrator(String frstName, String lstName, int schoolIDNumber, String usrName, boolean userIsAdmin, 
 			String passwordEntry, String schoolDept, String titleOfAdmin){

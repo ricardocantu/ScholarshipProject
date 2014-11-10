@@ -23,7 +23,7 @@ public class StudentWindow extends JFrame{
 	
 	private JPanel panel;
 	
-	public StudentWindow(String userNameData, String passwordData, boolean isAdmin, int idNumber) throws FileNotFoundException{
+	public StudentWindow(int idNumber) throws FileNotFoundException{
 		
 		File userFile = new File(idNumber+".txt");
 		
@@ -36,20 +36,15 @@ public class StudentWindow extends JFrame{
 		//Get and set student information from file
 		
 		if(label.matches("<firstName>")){
-			studentData.setFirstName(studInfo.next());
+			studentData.setFirstName(studInfo.nextLine());
 			studInfo.next();
-			studentData.setLastName(studInfo.next());
+			studentData.setLastName(studInfo.nextLine());
 			studInfo.next();
 			studentData.setSchoolID(studInfo.nextInt());
 			studInfo.next();
 			studentData.setUserName(studInfo.next());
 			studInfo.next();
-			
-			if("true".matches(studInfo.next()))
-				studentData.setAdminUser(true);
-			else
-				studentData.setAdminUser(false);
-			
+			studentData.setAdminUser(false);
 			studInfo.next();
 			studentData.setCollege(studInfo.nextLine());
 			studInfo.next();

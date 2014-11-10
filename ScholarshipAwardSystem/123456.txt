@@ -1,0 +1,7 @@
+<firstName> Juan
+<lastName> Admin
+<schoolID> 123456
+<username> juan
+<isAdmin> true
+<title> Dean
+<department> Science and Technology
