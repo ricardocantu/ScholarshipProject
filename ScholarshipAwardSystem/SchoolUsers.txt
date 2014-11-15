@@ -5,9 +5,16 @@
 <secQues> What is your favorite color?
 <answer> red
 <
-<username> juan
+<username> admin
 <password> dosdos
 <isAdmin> true
 <idNum> 123456
 <secQues> What is your favorite animal?
 <answer> tiger
+<
+<username> student
+<password> password
+<isAdmin> false
+<idNum> 12345678
+<secQues> What is your favorite color?
+<answer> blue

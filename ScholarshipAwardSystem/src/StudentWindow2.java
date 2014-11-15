@@ -30,7 +30,7 @@ public class StudentWindow2 extends JPanel {
     private JLabel gpaLabel;
     private JLabel hoursTakenLabel;
     
-    private static final JFrame frame = new JFrame("Scholarship Award System: Student");   
+    private static JFrame frame = new JFrame("Scholarship Award System: Student");   
     
     private Student studentData = new Student();
     private Scholarship scholarData = new Scholarship();
@@ -371,10 +371,13 @@ public class StudentWindow2 extends JPanel {
         
         @Override
         public void actionPerformed(ActionEvent e2){
-            
+                                          
             frame.dispose();
-            LoginWindow newLoginWindow = new LoginWindow();
-                       
+            studentData = new Student();
+            scholarData = new Scholarship();
+            frame = new JFrame();
+            counter = 0;   
+            LoginWindow loginWindow = new LoginWindow();
         }
     }
     

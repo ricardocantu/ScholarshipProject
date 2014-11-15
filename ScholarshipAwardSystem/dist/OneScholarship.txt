@@ -1,0 +1,10 @@
+<name> One Scholarship
+<major> B.S. in Computer Science
+<declared> true
+<minGPA> 3.00
+<minHrs> 40
+<classification> any
+<amount> 3000
+<maxNum> 7
+<currentNum> 0
+<fileName> OneScholarship

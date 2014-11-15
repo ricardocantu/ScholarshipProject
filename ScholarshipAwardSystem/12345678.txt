@@ -1,0 +1,12 @@
+<firstName> Stu
+<lastName> Dent
+<schoolID> 12345678
+<username> student
+<college> none
+<declared> false
+<major> undeclared
+<classification> Freshman
+<gpa> 4.00
+<hours> 14
+<scholarship> false
+<awardName> none

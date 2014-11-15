@@ -1,7 +1,7 @@
-<firstName> Juan
-<lastName> Admin
+<firstName> Admin
+<lastName> Istrator
 <schoolID> 123456
-<username> juan
+<username> admin
 <isAdmin> true
-<title> Dean
-<department> Science and Technology
+<title> STAFF
+<department> Financial Services
