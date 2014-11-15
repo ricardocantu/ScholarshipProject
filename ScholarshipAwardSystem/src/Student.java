@@ -22,11 +22,11 @@ public class Student extends SchoolUser{
 		//erase top mock
 		
 		public Student(String frstName, String lstName, int schoolIDNumber,
-			String usrName, boolean userIsAdmin,String studentCollege, 
+			String usrName, String studentCollege, 
 			boolean hasDeclaredMajor, String studentMajor,String studentClassification, 
 			double studentGPA,int hoursTakenData, boolean hasScholarshipData) {
 		
-			super(userIsAdmin, frstName, lstName, schoolIDNumber, usrName);
+			super(false, frstName, lstName, schoolIDNumber, usrName);
 		
 			college = studentCollege;
 			declaredMajor = hasDeclaredMajor;

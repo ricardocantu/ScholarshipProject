@@ -1,0 +1,4 @@
+<name> OneScholarship
+<maxNum> 7
+<currentNum> 0
+<studentsID> 

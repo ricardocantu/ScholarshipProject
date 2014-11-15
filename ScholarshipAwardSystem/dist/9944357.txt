@@ -8,5 +8,4 @@
 <classification> Junior
 <gpa> 3.44
 <hours> 60
-<scholarship> true
-<awardName> One Scholarship
+<scholarship> false

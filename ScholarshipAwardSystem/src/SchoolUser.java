@@ -12,7 +12,6 @@ public class SchoolUser {
 	private String userName;
 	
 	
-	
 	public SchoolUser( boolean userIsAdmin, String frstName, String lstName, int schoolIDNumber, 
 			String usrName){
 		firstName = frstName;

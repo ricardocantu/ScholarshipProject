@@ -14,10 +14,10 @@ public class Administrator extends SchoolUser {
 		adminTitle = "";
 	}
 
-	public Administrator(String frstName, String lstName, int schoolIDNumber, String usrName, boolean userIsAdmin, 
+	public Administrator(String frstName, String lstName, int schoolIDNumber, String usrName, 
 			String passwordEntry, String schoolDept, String titleOfAdmin){
 		
-		super(userIsAdmin,frstName,lstName,schoolIDNumber,usrName);
+		super(true,frstName,lstName,schoolIDNumber,usrName);
 		
 		password = passwordEntry;
 		schoolDepartment = schoolDept;

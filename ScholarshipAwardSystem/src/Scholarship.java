@@ -18,9 +18,26 @@ public class Scholarship {
 	private int maxNumAwards;//Max number of awards available for student
 	
 	private int currentNumStudents;//added students 
+        
+        private String fileName;//File name wher scholarship is stored
 	
+        public Scholarship(){
+            
+            name = "";
+            major = "";
+            declaredMajor = false;
+            minGPA = 0.00;
+            minHrs = 0;
+            classification = "";
+            amount = 0;
+            maxNumAwards = 0;
+            currentNumStudents = 0;
+            fileName = "";
+        }
+        
 	public Scholarship(String awardName, String awardMajor, boolean hasDeclaredMajor, double awardMinGPA,
-			int awardMinHrs, String awardClassification, int awardAmount, int numOfAwardsAvail){
+			int awardMinHrs, String awardClassification, int awardAmount, int numOfAwardsAvail, 
+                        int currentNumData, String fileNameData){
 		
 		name = awardName;
 		major = awardMajor;
@@ -30,6 +47,8 @@ public class Scholarship {
 		classification = awardClassification;
 		amount = awardAmount;
 		maxNumAwards = numOfAwardsAvail;
+                currentNumStudents = currentNumData;
+                fileName = fileNameData;
 	}
 	
 	public void setName(String awardName){
@@ -63,7 +82,15 @@ public class Scholarship {
 	public void setMaxNumAwards(int numOfAwardsAvail){
 		maxNumAwards = numOfAwardsAvail;
 	}
+        
+        public void setCurrentNumStudents(int currentNumData){
+            currentNumStudents = currentNumData;
+        }
 	
+        public void setFileName(String fileNameData){
+            fileName = fileNameData;
+        }
+        
 	public String getName(){
 		return name;
 	}
@@ -95,37 +122,13 @@ public class Scholarship {
 	public int getMaxNumAwards(){
 		return maxNumAwards;
 	}
-	
-	//Checks if there is more awards available for students
-	public boolean noMoreAwards(){
-		if(currentNumStudents>=maxNumAwards){
-			return true;
-		}
-		else
-			return false;
-	}
-	
-	/*/NOT SURE OF THIS COMMENTED OUT YET
-	 * 
-	 * Add to the number of current students of this award and return String stating if able to or not
-	public String addCurrentNumStudents(){
-		
-		if(currentNumStudents<maxNumAwards){
-			currentNumStudents++;
-			return name+" added.";
-		}
-		else
-			return "Award is full please try another one or check later for availability";
-	}
-	
-	//If student or administrator removes award 
-	//it reduces the current amount of students for scholarship availability
-	public void removeStudent(){
-		
-		if(currentNumStudents>0)
-			currentNumStudents--;
-		else
-			currentNumStudents = 0;	
-	}
-	*/
+        
+        public int getCurrentNumStudents(){
+            return currentNumStudents;
+        }
+        
+        public String getFileName(){
+            return fileName;
+        }
 }
+        
