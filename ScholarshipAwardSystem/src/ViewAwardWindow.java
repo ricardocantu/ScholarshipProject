@@ -291,7 +291,7 @@ public class ViewAwardWindow extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Add content to the window.
-        frame.add(new StudentWindow2(userIDNumber));
+        frame.add(new StudentWindow(userIDNumber));
 
         //Display the window.
         frame.pack();

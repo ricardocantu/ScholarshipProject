@@ -193,7 +193,7 @@ public class LoginWindow extends JFrame {
 				}	
 				if(loginSuccess && !isAdmin){
 					dispose();
-                                    StudentWindow2 studentWindow = new StudentWindow2(idNumber);
+                                    StudentWindow studentWindow = new StudentWindow(idNumber);
 				
 				}
 				else if(loginSuccess && isAdmin){
