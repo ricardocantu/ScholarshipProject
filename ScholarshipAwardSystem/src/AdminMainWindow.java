@@ -1,71 +1,192 @@
+import java.awt.Dimension;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import javax.swing.*;
 
-public class AdminMainWindow extends JPanel implements ActionListener {
+public class AdminMainWindow extends JPanel {
 
-    JFileChooser fc;
-    
-    /**
-     * Creates new form AdminWindow
-     */
-    public AdminMainWindow() {
-        
-        
-        //JScrollPane logScrollPane = new JScrollPane(log);
+    private JButton jLogOutButton;
+    private JButton jButtonAdd;
+    private JButton jButtonNext;
+    private JButton jButtonPrev;
+    private JLabel jLabel10;
+    private JLabel jLabel11;
+    private JLabel jLabel12;
+    private JLabel jLabel13;
+    private JLabel jLabel14;
+    private JLabel jLabel9;
+    private JPanel jPanel1;
+    private JPanel jPanelContainer;
+    private JPanel jPanelContent;
+    private JScrollPane jScrollPane1;
+    private JTextArea jTextAreaContent;
 
-        //Create a file chooser
-        fc = new JFileChooser();
-        
-        
+    private static JFrame frame = new JFrame();
+
+    private static int userIDNumber;
+    private int numOfScholarships;
+    private String[] scholarshipFilenames;
+    private Administrator adminData = new Administrator();
+    private Scholarship scholarData = new Scholarship();
+    private boolean meetsRequirements = false;
+
+    private boolean foundFirstLabel = false;
+    private static int counter = 0;
+
+    private int counterNext = 1;
+    private int counterPrev;
+
+    public AdminMainWindow(int idNumber) {
+
+        frame.setTitle("Scholarship Award System: Administrator");
+
+        userIDNumber = idNumber;
+
+        File userFile = new File(idNumber + ".txt");
+
+        try {
+            Scanner adminInfo = new Scanner(userFile);
+
+            while (adminInfo.hasNext() && !foundFirstLabel) {
+
+                String label = adminInfo.next();
+
+                //Get and set student information from file
+                if (label.matches("<firstName>")) {
+
+                    adminData.setFirstName(adminInfo.nextLine());
+                    adminInfo.next();
+                    adminData.setLastName(adminInfo.nextLine());
+                    adminInfo.next();
+                    adminData.setSchoolID(adminInfo.nextInt());
+                    adminInfo.next();
+                    adminData.setUserName(adminInfo.next());
+                    adminInfo.next();
+                    if ("true".matches(adminInfo.next())) {
+                        adminData.setAdminUser(true);
+                    } else {
+                        adminData.setAdminUser(false);
+                    }
+                    adminInfo.next();
+                    adminData.setAdminTitle(adminInfo.nextLine());
+                    adminInfo.next();
+                    adminData.setSchoolDepartment(adminInfo.nextLine());
+
+                    foundFirstLabel = true;
+                }
+                break;
+            }
+
+            adminInfo.close();
+
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Error loading data!");
+        }
+
+        //Get first scholarship Information
+        File awardsFile = new File("Scholarships.txt");
+
+        try {
+
+            Scanner awardInfo = new Scanner(awardsFile);
+            String label;
+            String scholarFileName = "";
+
+            int counterScholar = 0;
+
+            while (awardInfo.hasNext()) {
+
+                label = awardInfo.next();
+
+                if (label.matches("<numOfScholarships>")) {
+                    numOfScholarships = awardInfo.nextInt();
+                    counterPrev = numOfScholarships - 1;
+                    scholarshipFilenames = new String[numOfScholarships];
+                } else if (label.matches("<name>")) {
+                    scholarFileName = awardInfo.next();
+                    scholarshipFilenames[counterScholar] = scholarFileName;
+                    counterScholar++;
+                }
+
+            }
+            awardInfo.close();
+
+            File scholarFile = new File(scholarshipFilenames[0] + ".txt");
+            Scanner scholarInfo = new Scanner(scholarFile);
+
+            while (scholarInfo.hasNext()) {
+                label = scholarInfo.next();
+
+                if (label.matches("<name>")) {
+                    scholarData.setName(scholarInfo.nextLine());
+                    scholarInfo.next();
+                    scholarData.setMajor(scholarInfo.nextLine());
+                    scholarInfo.next();
+                    if ("true".matches(scholarInfo.next())) {
+                        scholarData.setDeclaredMajor(true);
+                    } else {
+                        scholarData.setDeclaredMajor(false);
+                    }
+                    scholarInfo.next();
+                    scholarData.setMinGPA(scholarInfo.nextDouble());
+                    scholarInfo.next();
+                    scholarData.setMinHrs(scholarInfo.nextInt());
+                    scholarInfo.next();
+                    scholarData.setClassification(scholarInfo.next());
+                    scholarInfo.next();
+                    scholarData.setAmount(scholarInfo.nextInt());
+                    scholarInfo.next();
+                    scholarData.setMaxNumAwards(scholarInfo.nextInt());
+                    scholarInfo.next();
+                    scholarData.setCurrentNumStudents(scholarInfo.nextInt());
+                    scholarInfo.next();
+                    scholarData.setFileName(scholarInfo.next());
+                    scholarInfo.next();
+                    scholarData.setStudInAward(scholarInfo.nextLine());
+                }
+                break;
+            }
+
+            scholarInfo.close();
+
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error accesing Scholarships file!");
+        }
+
+        //DO NOT REMOVE OR MODIFY THIS
         initComponents();
-        
-        
+        run();
+
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelContainer = new javax.swing.JPanel();
-        jButtonNext = new javax.swing.JButton();
-        jButtonPrev = new javax.swing.JButton();
-        jPanelContent = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaContent = new javax.swing.JTextArea();
-        jButtonAdd = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jPanelContainer = new JPanel();
+        jButtonNext = new JButton();
+        jButtonPrev = new JButton();
+        jPanelContent = new JPanel();
+        jScrollPane1 = new JScrollPane();
+        jTextAreaContent = new JTextArea();
+        jButtonAdd = new JButton();
+        jPanel1 = new JPanel();
+        jLabel9 = new JLabel();
+        jLabel10 = new JLabel();
+        jLabel11 = new JLabel();
+        jLabel12 = new JLabel();
+        jLabel13 = new JLabel();
+        jLabel14 = new JLabel();
+        jLogOutButton = new JButton();
 
-        jPanelContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanelContainer.setBorder(BorderFactory.createEtchedBorder());
 
         jButtonNext.setText(">");
 
         jButtonPrev.setText("<");
-        jButtonPrev.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPrevActionPerformed(evt);
-            }
-        });
 
         jPanelContent.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -73,196 +194,349 @@ public class AdminMainWindow extends JPanel implements ActionListener {
         jTextAreaContent.setRows(5);
         jScrollPane1.setViewportView(jTextAreaContent);
 
-        javax.swing.GroupLayout jPanelContentLayout = new javax.swing.GroupLayout(jPanelContent);
+        GroupLayout jPanelContentLayout = new GroupLayout(jPanelContent);
         jPanelContent.setLayout(jPanelContentLayout);
         jPanelContentLayout.setHorizontalGroup(
-            jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                jPanelContentLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
         );
         jPanelContentLayout.setVerticalGroup(
-            jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+                jPanelContentLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1)
         );
 
         jButtonAdd.setText("Add Scholarships");
-        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddActionPerformed(evt);
-            }
-        });
 
-        javax.swing.GroupLayout jPanelContainerLayout = new javax.swing.GroupLayout(jPanelContainer);
+        GroupLayout jPanelContainerLayout = new GroupLayout(jPanelContainer);
         jPanelContainer.setLayout(jPanelContainerLayout);
         jPanelContainerLayout.setHorizontalGroup(
-            jPanelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelContainerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonPrev)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonNext)
-                .addContainerGap())
-            .addGroup(jPanelContainerLayout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(jButtonAdd)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                jPanelContainerLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(GroupLayout.Alignment.TRAILING, jPanelContainerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonPrev)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelContent, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonNext)
+                        .addContainerGap())
+                .addGroup(jPanelContainerLayout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jButtonAdd)
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelContainerLayout.setVerticalGroup(
-            jPanelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelContainerLayout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addGroup(jPanelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonNext)
-                    .addComponent(jButtonPrev))
-                .addContainerGap(234, Short.MAX_VALUE))
-            .addGroup(jPanelContainerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonAdd)
-                .addContainerGap())
+                jPanelContainerLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelContainerLayout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addGroup(jPanelContainerLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButtonNext)
+                                .addComponent(jButtonPrev))
+                        .addContainerGap(234, Short.MAX_VALUE))
+                .addGroup(jPanelContainerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanelContent, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonAdd)
+                        .addContainerGap())
         );
 
-        jLabel9.setText("Username: ");
+        jLabel9.setText("Username: " + adminData.getUserName());
 
-        jLabel10.setText("First Name:");
+        jLabel10.setText("First Name:" + adminData.getFirstName());
 
-        jLabel11.setText("Last Name:");
+        jLabel11.setText("Last Name:" + adminData.getLastName());
 
-        jLabel12.setText("ID #: ");
+        jLabel12.setText("ID #: " + adminData.getSchoolID());
 
-        jLabel13.setText("Department: ");
+        jLabel13.setText("Department:" + adminData.getSchoolDepartment());
 
-        jLabel14.setText("Title: ");
+        jLabel14.setText("Title:" + adminData.getAdminTitle());
 
-        jButton1.setText("Log Out");
+        jLogOutButton.setText("Log Out");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        //Add all action listeners below for all the buttons
+        jLogOutButton.addActionListener(new jLogOutButtonListener());
+        jButtonNext.addActionListener(new jButtonNextListener());
+        jButtonPrev.addActionListener(new jButtonPrevListener());
+        jButtonAdd.addActionListener(new jButtonAddListener());
+
+        //Add the scholarships to the Text Area Content Edit the scholarship later!!!!!
+        jTextAreaContent.setText("The" + scholarData.getName() + "\n\n"
+                + "Eligibility:\n"
+                + "\n* Declared Major: " + (scholarData.hasDeclaredMajor() ? "yes" : "no")
+                + "\n* Major required:" + scholarData.getMajor()
+                + "\n* Minimum GPA required: " + scholarData.getMinGPA()
+                + "\n* Minimum Hours taken: " + scholarData.getMinHrs()
+                + "\n* Student classification: " + scholarData.getClassification()
+                + "\n* Award amount: $" + scholarData.getAmount()
+                + "\n* Awards available: " + (scholarData.getMaxNumAwards() - scholarData.getCurrentNumStudents())
+                + "\n* Students that have the award:"
+                + "\n" + scholarData.getStudInAward());
+
+                                //ADD the current Students that have the scholarship
+        jTextAreaContent.setEditable(false);
+
+        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jButton1)))
-                .addContainerGap(105, Short.MAX_VALUE))
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel9)
+                                                .addComponent(jLabel10)
+                                                .addComponent(jLabel11)
+                                                .addComponent(jLabel12)
+                                                .addComponent(jLabel13)
+                                                .addComponent(jLabel14)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
+                                        .addComponent(jLogOutButton)))
+                        .addContainerGap(105, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLogOutButton)
+                        .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelContainer, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanelContainer, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
         );
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrevActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonPrevActionPerformed
-
-    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        // TODO add your handling code here:
-        if (evt.getSource() == jButtonAdd) {
-            int returnVal = fc.showOpenDialog(AdminMainWindow.this);
-
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-            }
-        //Handle save button action.
-        }
-    }//GEN-LAST:event_jButtonAddActionPerformed
-
-  
-// JPanelContent will be deleted, can't do it in Netbeans :(
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonAdd;
-    private javax.swing.JButton jButtonNext;
-    private javax.swing.JButton jButtonPrev;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanelContainer;
-    private javax.swing.JPanel jPanelContent;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextAreaContent;
-    // End of variables declaration//GEN-END:variables
-
-    
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    private class jLogOutButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e2) {
+
+            frame.dispose();
+            adminData = new Administrator();
+            scholarData = new Scholarship();
+            frame = new JFrame();
+            counter = 0;
+            LoginWindow loginWindow = new LoginWindow();
+        }
+    }
+
+    private class jButtonNextListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e4) {
+
+            try {
+                String label;
+
+                File scholarFile = new File(scholarshipFilenames[counterNext] + ".txt");
+                Scanner scholarInfo = new Scanner(scholarFile);
+                scholarData = new Scholarship();
+
+                while (scholarInfo.hasNext()) {
+                    label = scholarInfo.next();
+
+                    if (label.matches("<name>")) {
+                        scholarData.setName(scholarInfo.nextLine());
+                        scholarInfo.next();
+                        scholarData.setMajor(scholarInfo.nextLine());
+                        scholarInfo.next();
+                        if ("true".matches(scholarInfo.next())) {
+                            scholarData.setDeclaredMajor(true);
+                        } else {
+                            scholarData.setDeclaredMajor(false);
+                        }
+                        scholarInfo.next();
+                        scholarData.setMinGPA(scholarInfo.nextDouble());
+                        scholarInfo.next();
+                        scholarData.setMinHrs(scholarInfo.nextInt());
+                        scholarInfo.next();
+                        scholarData.setClassification(scholarInfo.next());
+                        scholarInfo.next();
+                        scholarData.setAmount(scholarInfo.nextInt());
+                        scholarInfo.next();
+                        scholarData.setMaxNumAwards(scholarInfo.nextInt());
+                        scholarInfo.next();
+                        scholarData.setCurrentNumStudents(scholarInfo.nextInt());
+                        scholarInfo.next();
+                        scholarData.setFileName(scholarInfo.next());
+                        scholarInfo.next();
+                        scholarData.setStudInAward(scholarInfo.nextLine());
+                        
+                    }
+                    break;
+                }
+
+                scholarInfo.close();
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error accesing Scholarships file!");
+            }
+
+            jTextAreaContent.setText("The" + scholarData.getName() + "\n\n"
+                    + "Eligibility:\n"
+                    + "\n* Declared Major: " + (scholarData.hasDeclaredMajor() ? "yes" : "no")
+                    + "\n* Major required:" + scholarData.getMajor()
+                    + "\n* Minimum GPA required: " + scholarData.getMinGPA()
+                    + "\n* Minimum Hours taken: " + scholarData.getMinHrs()
+                    + "\n* Student classification: " + scholarData.getClassification()
+                    + "\n* Award amount: $" + scholarData.getAmount()
+                    + "\n* Awards available: " + (scholarData.getMaxNumAwards() - scholarData.getCurrentNumStudents())
+                    + "\n* Students that have the award:"
+                    + "\n" + scholarData.getStudInAward());
+
+            jTextAreaContent.setEditable(false);
+
+            if (counterNext < numOfScholarships - 1) {
+                counterNext++;
+            } else {
+                counterNext = 0;
+            }
+
+        }
+    }
+
+    private class jButtonPrevListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e5) {
+
+            try {
+                String label;
+
+                File scholarFile = new File(scholarshipFilenames[counterPrev] + ".txt");
+                Scanner scholarInfo = new Scanner(scholarFile);
+                scholarData = new Scholarship();
+
+                while (scholarInfo.hasNext()) {
+                    label = scholarInfo.next();
+
+                    if (label.matches("<name>")) {
+                        scholarData.setName(scholarInfo.nextLine());
+                        scholarInfo.next();
+                        scholarData.setMajor(scholarInfo.nextLine());
+                        scholarInfo.next();
+                        if ("true".matches(scholarInfo.next())) {
+                            scholarData.setDeclaredMajor(true);
+                        } else {
+                            scholarData.setDeclaredMajor(false);
+                        }
+                        scholarInfo.next();
+                        scholarData.setMinGPA(scholarInfo.nextDouble());
+                        scholarInfo.next();
+                        scholarData.setMinHrs(scholarInfo.nextInt());
+                        scholarInfo.next();
+                        scholarData.setClassification(scholarInfo.next());
+                        scholarInfo.next();
+                        scholarData.setAmount(scholarInfo.nextInt());
+                        scholarInfo.next();
+                        scholarData.setMaxNumAwards(scholarInfo.nextInt());
+                        scholarInfo.next();
+                        scholarData.setCurrentNumStudents(scholarInfo.nextInt());
+                        scholarInfo.next();
+                        scholarData.setFileName(scholarInfo.next());
+                        scholarInfo.next();
+                        scholarData.setStudInAward(scholarInfo.nextLine());
+                        
+                    }
+                    break;
+                }
+
+                scholarInfo.close();
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error accesing Scholarships file!");
+            }
+
+            jTextAreaContent.setText("The" + scholarData.getName() + "\n\n"
+                    + "Eligibility:\n"
+                    + "\n* Declared Major: " + (scholarData.hasDeclaredMajor() ? "yes" : "no")
+                    + "\n* Major required:" + scholarData.getMajor()
+                    + "\n* Minimum GPA required: " + scholarData.getMinGPA()
+                    + "\n* Minimum Hours taken: " + scholarData.getMinHrs()
+                    + "\n* Student classification: " + scholarData.getClassification()
+                    + "\n* Award amount: $" + scholarData.getAmount()
+                    + "\n* Awards available: " + (scholarData.getMaxNumAwards() - scholarData.getCurrentNumStudents())
+                    + "\n* Students that have the award:"
+                    + "\n" + scholarData.getStudInAward());
+
+            jTextAreaContent.setEditable(false);
+
+            if (counterPrev > 0) {
+                counterPrev--;
+            } else {
+                counterPrev = numOfScholarships - 1;
+            }
+
+        }
+    }
+
+    private class jButtonAddListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            frame.dispose();
+            adminData = new Administrator();
+            scholarData = new Scholarship();
+            frame = new JFrame();
+            counter = 0;
+
+            AddScholarshipWindow addScholarshipWindow = new AddScholarshipWindow(userIDNumber);
+        }
+
+    }
+
     private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("FileChooserDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Add content to the window.
-        frame.add(new AdminMainWindow());
+        frame.add(new AdminMainWindow(userIDNumber));
 
         //Display the window.
         frame.pack();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
         frame.setVisible(true);
+        counter++;
     }
-    
-     public static void main(String[] args) {
-        //Schedule a job for the event dispatch thread:
-        //creating and showing this application's GUI.
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                //Turn off metal's use of bold fonts
-                UIManager.put("swing.boldMetal", Boolean.FALSE); 
+
+    private static void run() {
+        SwingUtilities.invokeLater(() -> {
+            //Turn off metal's use of bold fonts
+            if (counter == 0) {
+                UIManager.put("swing.boldMetal", Boolean.FALSE);
                 createAndShowGUI();
             }
         });
     }
+
 }

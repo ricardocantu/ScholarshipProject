@@ -3,8 +3,9 @@
 <declared> true
 <minGPA> 3.00
 <minHrs> 40
-<classification> any
+<classification> Any
 <amount> 3000
 <maxNum> 7
 <currentNum> 0
 <fileName> OneScholarship
+<students> 

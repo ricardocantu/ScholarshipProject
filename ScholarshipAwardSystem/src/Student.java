@@ -7,36 +7,17 @@ public class Student extends SchoolUser{
 		private double gpa;
 		private int hoursTaken;
 		private boolean hasAward;
+                private String currentAward;
 	
-		//Mock erase later
 		public Student(){
-			super(false, "", "", 0, "");
-			
-			
+			super();
 			college = "";
 			declaredMajor = false;
 			major = "";
 			classification = "";
 			gpa = 0;
+                        currentAward = "";
 		}
-		//erase top mock
-		
-		public Student(String frstName, String lstName, int schoolIDNumber,
-			String usrName, String studentCollege, 
-			boolean hasDeclaredMajor, String studentMajor,String studentClassification, 
-			double studentGPA,int hoursTakenData, boolean hasScholarshipData) {
-		
-			super(false, frstName, lstName, schoolIDNumber, usrName);
-		
-			college = studentCollege;
-			declaredMajor = hasDeclaredMajor;
-			major = studentMajor;
-			classification = studentClassification;
-			gpa = studentGPA;
-			hoursTaken = hoursTakenData;
-			hasAward = hasScholarshipData;
-		}
-	
 		
 		public void setCollege(String studentCollege){
 			college = studentCollege;
@@ -62,9 +43,13 @@ public class Student extends SchoolUser{
 			hoursTaken = hoursData;
 		}
 		
-		public void setHasScholarship(boolean hasScholarshipData){
-			hasAward = hasScholarshipData;
+		public void setHasAward(boolean hasAwardData){
+			hasAward = hasAwardData;
 		}
+                
+                public void setCurrentAward(String currentAwardName){
+                    currentAward = currentAwardName;
+                }
 	
 		public String getCollege(){
 			return college;
@@ -93,4 +78,8 @@ public class Student extends SchoolUser{
 		public boolean hasScholarship(){
 			return hasAward;
 		}
+                
+                public String getCurrentAward(){
+                    return currentAward;
+                }
 	}

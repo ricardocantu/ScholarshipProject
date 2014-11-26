@@ -1,0 +1,11 @@
+<name> Another Scholarship
+<major> Any
+<declared> false
+<minGPA> 3.00
+<minHrs> 12
+<classification> Any
+<amount> 3000
+<maxNum> 7
+<currentNum> 0
+<fileName> AnotherScholarship
+<students> 

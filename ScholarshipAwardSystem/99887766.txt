@@ -1,12 +1,12 @@
 <firstName> Ricardo
 <lastName> Cantu
-<schoolID> 9944357
-<username> cantur22
-<college> Science and Technology
+<schoolID> 99887766
+<username> cantur
+<college> College of Science and Technology
 <declared> true
 <major> B.S. in Computer Science
 <classification> Junior
 <gpa> 3.44
 <hours> 60
-<scholarship> true
-<awardName> One Scholarship
+<scholarship> false
+<awardName> None

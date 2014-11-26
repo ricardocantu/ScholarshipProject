@@ -20,6 +20,10 @@ public class Scholarship {
 	private int currentNumStudents;//added students 
         
         private String fileName;//File name wher scholarship is stored
+        
+        private String studInAward;
+        
+        private boolean empty;
 	
         public Scholarship(){
             
@@ -33,24 +37,10 @@ public class Scholarship {
             maxNumAwards = 0;
             currentNumStudents = 0;
             fileName = "";
+            studInAward = "";
+            empty = true;
         }
         
-	public Scholarship(String awardName, String awardMajor, boolean hasDeclaredMajor, double awardMinGPA,
-			int awardMinHrs, String awardClassification, int awardAmount, int numOfAwardsAvail, 
-                        int currentNumData, String fileNameData){
-		
-		name = awardName;
-		major = awardMajor;
-		declaredMajor = hasDeclaredMajor;
-		minGPA = awardMinGPA;
-		minHrs = awardMinHrs;
-		classification = awardClassification;
-		amount = awardAmount;
-		maxNumAwards = numOfAwardsAvail;
-                currentNumStudents = currentNumData;
-                fileName = fileNameData;
-	}
-	
 	public void setName(String awardName){
 		name = awardName;
 	}
@@ -85,10 +75,17 @@ public class Scholarship {
         
         public void setCurrentNumStudents(int currentNumData){
             currentNumStudents = currentNumData;
+            
         }
 	
         public void setFileName(String fileNameData){
             fileName = fileNameData;
+            
+        }
+        
+        public void setStudInAward(String studentsInData){
+            studInAward = studentsInData;
+            
         }
         
 	public String getName(){
@@ -129,6 +126,25 @@ public class Scholarship {
         
         public String getFileName(){
             return fileName;
+        }
+        
+        public String getStudInAward(){
+            return studInAward;
+        }
+        
+        public boolean isEmpty(){
+           
+            if(!name.matches(""))
+                if(!major.matches(""))
+                    if(minGPA != 0.00)
+                        if(minHrs != 0)
+                            if(!classification.matches(""))
+                                if(amount != 0)
+                                    if(maxNumAwards != 0)
+                                        empty = false;
+            
+            return empty;
+            
         }
 }
         

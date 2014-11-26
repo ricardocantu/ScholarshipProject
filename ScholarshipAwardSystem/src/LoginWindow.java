@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -198,7 +199,7 @@ public class LoginWindow extends JFrame {
 				}
 				else if(loginSuccess && isAdmin){
 					dispose();
-                                    AdministratorWindow administratorWindow = new AdministratorWindow(idNumber);
+                                    AdminMainWindow adminWindow = new AdminMainWindow(idNumber);
 				}
 				usersData.close();
 			}

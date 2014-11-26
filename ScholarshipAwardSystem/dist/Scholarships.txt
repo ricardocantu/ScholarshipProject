@@ -1,4 +1,9 @@
+<numOfScholarships> 4
+<
 <name> OneScholarship
-<maxNum> 7
-<currentNum> 0
-<studentsID> 
+<
+<name> AnotherScholarship
+<
+<name> MathematicsScholarship
+<
+<name> Test

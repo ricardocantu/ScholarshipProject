@@ -12,13 +12,12 @@ public class SchoolUser {
 	private String userName;
 	
 	
-	public SchoolUser( boolean userIsAdmin, String frstName, String lstName, int schoolIDNumber, 
-			String usrName){
-		firstName = frstName;
-		lastName = lstName;
-		schoolID = schoolIDNumber;
-		userName = usrName;
-		adminUser = userIsAdmin;
+	public SchoolUser(){
+		firstName = "";
+		lastName = "";
+		schoolID = 0;
+		userName = "";
+		adminUser = false;
 	}
 	
 	public void setFirstName(String first){

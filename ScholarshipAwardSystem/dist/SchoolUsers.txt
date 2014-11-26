@@ -1,13 +1,20 @@
-<username> cantur22
+<username> cantur
 <password> 123456
 <isAdmin> false
-<idNum> 9944357
+<idNum> 99887766
 <secQues> What is your favorite color?
 <answer> red
 <
-<username> juan
-<password> dosdos
+<username> admin
+<password> dosdosdos
 <isAdmin> true
 <idNum> 123456
 <secQues> What is your favorite animal?
 <answer> tiger
+<
+<username> student
+<password> password
+<isAdmin> false
+<idNum> 12345678
+<secQues> What is your favorite color?
+<answer> blue

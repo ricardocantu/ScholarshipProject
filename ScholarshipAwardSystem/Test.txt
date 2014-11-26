@@ -1,0 +1,11 @@
+<name> Test
+<major> Any
+<declared> false
+<minGPA> 2.5
+<minHrs> 14
+<classification> Freshman
+<amount> 1500
+<maxNum> 4
+<currentNum> 1
+<fileName> Test
+<students>  student: Stu Dent,

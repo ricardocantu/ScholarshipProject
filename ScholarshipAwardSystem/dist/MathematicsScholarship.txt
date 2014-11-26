@@ -1,0 +1,11 @@
+<name> Mathematics Scholarship
+<major> B.S. in Mathematics
+<declared> true
+<minGPA> 3.0
+<minHrs> 24
+<classification> Any
+<amount> 3500
+<maxNum> 4
+<currentNum> 0
+<fileName> MathematicsScholarship
+<students> 

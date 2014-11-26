@@ -8,20 +8,10 @@ public class Administrator extends SchoolUser {
 	private String adminTitle;
 	
 	public Administrator(){
-		super(true,"","",0,"");
+		super();
 		password = "";
 		schoolDepartment = "";
 		adminTitle = "";
-	}
-
-	public Administrator(String frstName, String lstName, int schoolIDNumber, String usrName, 
-			String passwordEntry, String schoolDept, String titleOfAdmin){
-		
-		super(true,frstName,lstName,schoolIDNumber,usrName);
-		
-		password = passwordEntry;
-		schoolDepartment = schoolDept;
-		adminTitle = titleOfAdmin;
 	}
 	
 	public void setPassword(String passwordEntry){
